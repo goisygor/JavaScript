@@ -63,6 +63,8 @@ body{
     background-color: #2ecc71;
     box-shadow: 0 0 10px 1px #2ecc71;
 }
-.button{
-    width: 80px;
+.buttons{
+    width: 150px;
+    height: 200px;
+    
 }

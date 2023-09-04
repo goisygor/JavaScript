@@ -1,35 +1,31 @@
-const $lucesDelCirculo = document.querySelectorAll('.luces-circulo');
-let contadorDeLuz = 0;
+const img = document.getElementById( 'img' );
+const buttons = document.getElementById( 'buttons' );
+let colorIndex = 0;
+let intervalId = null;
 
-const mostrarLuz = () =>{
-    $lucesDelCirculo[contadorDeLuz].className = 'luces-circulo';
-    contadorDeLuz++;
-
-    if(contadorDeLuz > 2) contadorDeLuz = 0;
-
-    const luzActual = $lucesDelCirculo[contadorDeLuz];
-    luzActual.classList.add(luzActual.getAttribute('color'))
-
-    const botao1 = document.getElementById('botao1');
-    const botao2 = document.getElementById('botao2');
-    const botao3 = document.getElementById('botao3');
-    const botao4 = document.getElementById('botao4');
-
-    botao1.addEventListener('click',
-    function(){
-        alert('botao 1 clicado');
-    });
-    botao2.addEventListener('click',
-    function(){
-        alert('botao 2 clicado');
-    });
-    botao3.addEventListener('click',
-    function(){
-        alert('botao 3 clicado');
-    });
-
-        botao4.addEventListener('click',
-        function(){
-            alert('botao 4 clicado');
-        });
+const trafficLight = ( event ) => {
+    stopAutomatic();
+    turnOn[event.target.id]();
 }
+
+const nextIndex = () => colorIndex = colorIndex < 2 ? ++colorIndex : 0;
+
+const changeColor = () => {
+    const colors = ['red','yellow','green']
+    const color = colors[ colorIndex ];
+    turnOn[color]();
+    nextIndex();
+}
+
+const stopAutomatic = () => {
+    clearInterval ( intervalId );
+}
+
+const turnOn = {
+    'red':      () => img.src = './img/vermelho.png',
+    'yellow':   () => img.src = './img/amarelo.png',
+    'green':    () => img.src = './img/verde.png',
+    'automatic': () => intervalId = setInterval( changeColor, 1000 )
+}
+
+buttons.addEventListener('click', trafficLight );

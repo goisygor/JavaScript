@@ -20,11 +20,12 @@ const changeColor = () => {
     turnOn[color]();
     nextIndex();
 }
-
+// Aqui é para deixar o semaforo automatico
 const stopAutomatic = () => {
     clearInterval(intervalId);
 }
 
+// aqui ele está dando a função para poder trocar as cores do semaforo
 const turnOn = {
     'red': () => img.src = './img/vermelho.png',
     'yellow': () => img.src = './img/amarelo.png',

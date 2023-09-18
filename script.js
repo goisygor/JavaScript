@@ -29,7 +29,7 @@ const changeColor = () => { //
 // Aqui é para deixar o semaforo automatico
 const stopAutomatic = () => {/*A função "stopAutomatic" interrompe a troca automática de cores do semáforo, 
                              utilizando o identificador do intervalo de tempo armazenado em "intervalId". */
-    clearInterval(intervalId);
+    clearInterval(intervalId); // aqui é para deixar o semaforo automatico em 1 seg cada cor
     
 }
 
@@ -38,7 +38,7 @@ correspondente no semáforo */
 const turnOn = {
     'red': () => img.src = './img/vermelho.png',
     'yellow': () => img.src = './img/amarelo.png',
-    'green': () => img.src = './img/verde.png',
+    'green': () => img.src = './img/verde.png',  
     'automatic': () => intervalId = setInterval(changeColor, 1000)
 }
 
